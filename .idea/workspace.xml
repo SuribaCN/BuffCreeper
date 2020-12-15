@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b319e3b-b2c1-4a08-b6f1-cf682a405e00" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/venv/Scripts/pyqt_mainActivity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Scripts/untitled.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/venv/Scripts/untitled.ui" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools/ssl_support.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Lib/site-packages/setuptools/ssl_support.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/database.db" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/database.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/getDetils.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/getDetils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/getgooddetils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/pyqt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/test.db" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lMnnVlvHt0kQiWqzbM9sGXhoUR" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/Programs/Python/Python39/python.exe" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="PyConsoleOptionsProvider">
+    <option name="myPythonConsoleState">
+      <console-settings module-name="Screeps" is-module-sdk="true">
+        <option name="myUseModuleSdk" value="true" />
+        <option name="myModuleName" value="Screeps" />
+      </console-settings>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.untitled">
+    <configuration name="Buff" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Screeps" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/Scripts/Buff.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="getDetils" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Screeps" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Suriba\PycharmProjects\Screeps-2\venv\Scripts\getDetils.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pyqt_mainActivity" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Screeps" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="C:\Users\Suriba\PycharmProjects\Screeps-2\venv\Scripts\pyqt_mainActivity.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="untitled" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Screeps" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/venv/Scripts" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/venv/Scripts/untitled.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.untitled" />
+        <item itemvalue="Python.getDetils" />
+        <item itemvalue="Python.pyqt_mainActivity" />
+        <item itemvalue="Python.Buff" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b319e3b-b2c1-4a08-b6f1-cf682a405e00" name="Default Changelist" comment="" />
+      <created>1607415995128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1607415995128</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="225" key="#com.intellij.ide.macro.MacrosDialog" timestamp="1607497415042">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="225" key="#com.intellij.ide.macro.MacrosDialog/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607497415042" />
+    <state x="723" y="349" width="518" height="342" key="#com.intellij.tools.ToolEditorDialog" timestamp="1607497416079">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="723" y="349" width="518" height="342" key="#com.intellij.tools.ToolEditorDialog/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607497416079" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1607497389016">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607497389016" />
+    <state width="1899" height="305" key="GridCell.Tab.0.bottom" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607589095351" />
+    <state width="1515" height="226" key="GridCell.Tab.0.bottom/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@-1920.0.1536.864" timestamp="1607426559688" />
+    <state width="1899" height="305" key="GridCell.Tab.0.bottom/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.0.center" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607589095351" />
+    <state width="1515" height="226" key="GridCell.Tab.0.center/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@-1920.0.1536.864" timestamp="1607426559687" />
+    <state width="1899" height="305" key="GridCell.Tab.0.center/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.0.left" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607589095351" />
+    <state width="1515" height="226" key="GridCell.Tab.0.left/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@-1920.0.1536.864" timestamp="1607426559687" />
+    <state width="1899" height="305" key="GridCell.Tab.0.left/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.0.right" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="212" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607589095351" />
+    <state width="1515" height="226" key="GridCell.Tab.0.right/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@-1920.0.1536.864" timestamp="1607426559688" />
+    <state width="1899" height="305" key="GridCell.Tab.0.right/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.1.bottom" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.1.bottom/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.1.center" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.1.center/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.1.left" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.1.left/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state width="1899" height="305" key="GridCell.Tab.1.right" timestamp="1608040332120">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="305" key="GridCell.Tab.1.right/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608040332120" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1607502496170">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607502496170" />
+    <state width="968" height="528" key="XDebugger.FullValuePopup" timestamp="1608031576031">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="968" height="528" key="XDebugger.FullValuePopup/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1608031576031" />
+    <state x="-1905" y="-17" width="1550" height="846" maximized="true" key="dock-window-1" timestamp="1607499423129">
+      <screen x="-1920" y="0" width="1536" height="864" />
+    </state>
+    <state x="-1905" y="-17" width="1550" height="846" maximized="true" key="dock-window-1/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607499423129" />
+    <state x="-1920" y="0" width="1550" height="872" key="dock-window-2" timestamp="1607502542034">
+      <screen x="-1920" y="0" width="1536" height="864" />
+    </state>
+    <state x="-1920" y="0" width="1550" height="872" key="dock-window-2/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607502542034" />
+    <state x="343" y="155" width="1552" height="873" key="dock-window-3" timestamp="1607502542034">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="343" y="155" width="1552" height="873" key="dock-window-3/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607502542034" />
+    <state x="-1921" y="-15" width="1550" height="787" maximized="true" key="dock-window-4" timestamp="1607520158077">
+      <screen x="-1920" y="0" width="1536" height="864" />
+    </state>
+    <state x="-1921" y="-15" width="1550" height="787" maximized="true" key="dock-window-4/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607520158077" />
+    <state x="954" y="268" width="672" height="678" key="search.everywhere.popup" timestamp="1607953272445">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="954" y="268" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1040/-1920.0.1536.864/0.0.1920.1040@0.0.1920.1040" timestamp="1607953272445" />
+  </component>
+</project>
