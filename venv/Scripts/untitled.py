@@ -9,231 +9,34 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from pyqt_mainActivity import *
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import QtSql
-from PyQt5 import QtCore
-from PyQt5 import QtWidgets
-from getDetils import *
-
-sqlCommand = "select * from buff where "
-orderType = 'scale_buff2steam'
-orderTypeDict = {'id':'id','挂刀比例':'scale_buff2steam','倒货收益率':'scale_steam2buff','倒货收益':'minus_steam2buff',
-                 'steam底价':'steam_min_price','buff底价':'buff_min_price','buff在售数':'buffonSale','buff求购数':'buffBuy','buff求购价':'buff_max_price'}
-
-exterior = '崭新出厂'
-
-#排序方式
-orderMethod = 'ASC'
-#求购数量下限
-buffBuy=0
-#物品暗金,纪念品品质
-type="'普通','★','StatTrak™','纪念品'"
-typeDict={'全部':"'普通','★','StatTrak™','纪念品'",'普通':"'普通','★'",'暗金':"'StatTrak™'","纪念品":"'纪念品'"}
-#磨损筛选
-checklistExterior=[2,2,2,2,2]
-checklistExteriorDict = {0:"'崭新出厂'",1:"'略有磨损'",2:"'久经沙场'",3:"'破损不堪'",4:"'战痕累累'"}
-#物品种类筛选
-checklistType=[2,2,2,2,2,2,2,2,2]
-checklistTypeDict= {0:"'匕首'",1:"'手枪'",2:"'步枪'",3:"'微型冲锋枪'",4:"'霰弹枪'",5:"'机枪'",6:"'手套'",7:"'印花'",8:"'其他'"}
 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(1280, 720)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(MainWindow.sizePolicy().hasHeightForWidth())
-        MainWindow.setSizePolicy(sizePolicy)
+        MainWindow.resize(800, 600)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setEnabled(True)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.centralwidget.sizePolicy().hasHeightForWidth())
-        self.centralwidget.setSizePolicy(sizePolicy)
         self.centralwidget.setObjectName("centralwidget")
-        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.horizontalLayout = QtWidgets.QHBoxLayout()
-        self.horizontalLayout.setObjectName("horizontalLayout")
-        self.tableView = QtWidgets.QTableView(self.centralwidget)
-        self.tableView.setObjectName("tableView")
-        self.horizontalLayout.addWidget(self.tableView)
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setSizeConstraint(QtWidgets.QLayout.SetDefaultConstraint)
-        self.formLayout.setObjectName("formLayout")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.formLayout_4 = QtWidgets.QFormLayout()
-        self.formLayout_4.setObjectName("formLayout_4")
-        self.label_4 = QtWidgets.QLabel(self.centralwidget)
-        self.label_4.setMaximumSize(QtCore.QSize(16777215, 20))
-        font = QtGui.QFont()
-        font.setBold(True)
-        font.setWeight(75)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.formLayout_4.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_4)
-        self.label_5 = QtWidgets.QLabel(self.centralwidget)
-        self.label_5.setObjectName("label_5")
-        self.formLayout_4.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_5)
-        self.formLayout_5 = QtWidgets.QFormLayout()
-        self.formLayout_5.setObjectName("formLayout_5")
-        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox.setObjectName("checkBox")
-        self.checkBox.setChecked(True)
-        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.checkBox)
-        self.checkBox_6 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_6.setObjectName("checkBox_6")
-        self.checkBox_6.setChecked(True)
-        self.formLayout_5.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.checkBox_6)
-        self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_2.setObjectName("checkBox_2")
-        self.checkBox_2.setChecked(True)
-        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.checkBox_2)
-        self.checkBox_7 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_7.setObjectName("checkBox_7")
-        self.checkBox_7.setChecked(True)
-        self.formLayout_5.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.checkBox_7)
-        self.checkBox_3 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_3.setObjectName("checkBox_3")
-        self.checkBox_3.setChecked(True)
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.checkBox_3)
-        self.checkBox_8 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_8.setObjectName("checkBox_8")
-        self.checkBox_8.setChecked(True)
-        self.formLayout_5.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.checkBox_8)
-        self.checkBox_4 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_4.setObjectName("checkBox_4")
-        self.checkBox_4.setChecked(True)
-        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.checkBox_4)
-        self.checkBox_9 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_9.setObjectName("checkBox_9")
-        self.checkBox_9.setChecked(True)
-        self.formLayout_5.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.checkBox_9)
-        self.checkBox_5 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_5.setObjectName("checkBox_5")
-        self.checkBox_5.setChecked(True)
-        self.formLayout_5.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.checkBox_5)
-        self.formLayout_4.setLayout(1, QtWidgets.QFormLayout.FieldRole, self.formLayout_5)
-        self.label_6 = QtWidgets.QLabel(self.centralwidget)
-        self.label_6.setObjectName("label_6")
-        self.formLayout_4.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_6)
-        self.formLayout_6 = QtWidgets.QFormLayout()
-        self.formLayout_6.setObjectName("formLayout_6")
-        #checkBox11 - checkBox15 为筛选磨损项
-        self.checkBox_11 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_11.setObjectName("checkBox_11")
-        self.checkBox_11.setChecked(True)
-        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.checkBox_11)
-        self.checkBox_12 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_12.setObjectName("checkBox_12")
-        self.checkBox_12.setChecked(True)
-        self.formLayout_6.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.checkBox_12)
-        self.checkBox_13 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_13.setObjectName("checkBox_13")
-        self.checkBox_13.setChecked(True)
-        self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.checkBox_13)
-        self.checkBox_14 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_14.setObjectName("checkBox_14")
-        self.checkBox_14.setChecked(True)
-        self.formLayout_6.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.checkBox_14)
-        self.checkBox_15 = QtWidgets.QCheckBox(self.centralwidget)
-        self.checkBox_15.setObjectName("checkBox_15")
-        self.checkBox_15.setChecked(True)
-
-        self.formLayout_6.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.checkBox_15)
-        self.formLayout_4.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.formLayout_6)
-        self.label_7 = QtWidgets.QLabel(self.centralwidget)
-        self.label_7.setObjectName("label_7")
-        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.label_7)
-        self.comboBox = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox.setObjectName("comboBox")
-        self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.comboBox)
-        self.label_8 = QtWidgets.QLabel(self.centralwidget)
-        self.label_8.setObjectName("label_8")
-        self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_8)
-        self.lineEdit_orderNumber = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_orderNumber.setObjectName("lineEdit_orderNumber")
-        self.lineEdit_orderNumber.setPlaceholderText("0")
-        self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_orderNumber)
-        self.verticalLayout_2.addLayout(self.formLayout_4)
-        self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_2)
-        self.line = QtWidgets.QFrame(self.centralwidget)
-        self.line.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line.setObjectName("line")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.line)
-        self.formLayout_3 = QtWidgets.QFormLayout()
-        self.formLayout_3.setObjectName("formLayout_3")
-        self.label_3 = QtWidgets.QLabel(self.centralwidget)
-        self.label_3.setObjectName("label_3")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label_3)
-        #排列方式选择，radioButton为由小至大ASC,radioButton_2为由大至小DESC
-        self.radioButton = QtWidgets.QRadioButton(self.centralwidget)
-        self.radioButton.setObjectName("radioButton")
-        self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.radioButton)
-        self.radioButton_2 = QtWidgets.QRadioButton(self.centralwidget)
-        self.radioButton_2.setObjectName("radioButton_2")
-
-        self.formLayout_3.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.radioButton_2)
-        self.comboBox_2 = QtWidgets.QComboBox(self.centralwidget)
-        self.comboBox_2.setObjectName("comboBox_2")
-        self.formLayout_3.setWidget(0, QtWidgets.QFormLayout.FieldRole, self.comboBox_2)
-        self.formLayout.setLayout(4, QtWidgets.QFormLayout.FieldRole, self.formLayout_3)
-        self.line_2 = QtWidgets.QFrame(self.centralwidget)
-        self.line_2.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_2.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_2.setObjectName("line_2")
-        self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.line_2)
-        #按下 检索 按钮
+        self.HellowWorld = QtWidgets.QTextBrowser(self.centralwidget)
+        self.HellowWorld.setGeometry(QtCore.QRect(240, 310, 256, 192))
+        self.HellowWorld.setObjectName("HellowWorld")
         self.pushButton = QtWidgets.QPushButton(self.centralwidget)
+        self.pushButton.setGeometry(QtCore.QRect(80, 110, 75, 23))
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(buildSqlCommand)
-
-        self.formLayout.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.pushButton)
-        self.formLayout_2 = QtWidgets.QFormLayout()
-        self.formLayout_2.setObjectName("formLayout_2")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setMaximumSize(QtCore.QSize(16777215, 30))
-        self.label.setObjectName("label")
-        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.LabelRole, self.label)
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setMaximumSize(QtCore.QSize(16777215, 16777215))
-        self.label_2.setObjectName("label_2")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.LabelRole, self.label_2)
-        self.lineEdit_scale2Search = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_scale2Search.setObjectName("lineEdit_scale2Search")
-        self.lineEdit_scale2Search.setPlaceholderText("输入余额比例")
-        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.FieldRole, self.lineEdit_scale2Search)
-        self.pushButton_2 = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_2.setMaximumSize(QtCore.QSize(100, 16777215))
-        self.pushButton_2.setObjectName("pushButton_2")
-        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.LabelRole, self.pushButton_2)
-        self.label_9 = QtWidgets.QLabel(self.centralwidget)
-        self.label_9.setObjectName("label_9")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.LabelRole, self.label_9)
-        self.lineEdit_Cookie = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_Cookie.setPlaceholderText("输入Cookie")
-        self.lineEdit_Cookie.setObjectName("lineEdit_Cookie")
-        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.lineEdit_Cookie)
-        self.formLayout.setLayout(0, QtWidgets.QFormLayout.FieldRole, self.formLayout_2)
-        self.line_3 = QtWidgets.QFrame(self.centralwidget)
-        self.line_3.setFrameShape(QtWidgets.QFrame.HLine)
-        self.line_3.setFrameShadow(QtWidgets.QFrame.Sunken)
-        self.line_3.setObjectName("line_3")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.FieldRole, self.line_3)
-        self.horizontalLayout.addLayout(self.formLayout)
-        self.horizontalLayout.setStretch(0, 6)
-        self.horizontalLayout_2.addLayout(self.horizontalLayout)
+        self.toolButton = QtWidgets.QToolButton(self.centralwidget)
+        self.toolButton.setGeometry(QtCore.QRect(300, 160, 25, 19))
+        self.toolButton.setObjectName("toolButton")
+        self.radioButton = QtWidgets.QRadioButton(self.centralwidget)
+        self.radioButton.setGeometry(QtCore.QRect(120, 250, 82, 17))
+        self.radioButton.setObjectName("radioButton")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1280, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 23))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
+        self.statusbar = QtWidgets.QStatusBar(MainWindow)
+        self.statusbar.setObjectName("statusbar")
+        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
@@ -241,144 +44,12 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_4.setText(_translate("MainWindow", "筛选："))
-        self.label_5.setText(_translate("MainWindow", "类型："))
-        self.checkBox.setText(_translate("MainWindow", "匕首"))
-        self.checkBox_6.setText(_translate("MainWindow", "手枪"))
-        self.checkBox_2.setText(_translate("MainWindow", "步枪"))
-        self.checkBox_7.setText(_translate("MainWindow", "微型冲锋枪"))
-        self.checkBox_3.setText(_translate("MainWindow", "霰弹枪"))
-        self.checkBox_8.setText(_translate("MainWindow", "机枪"))
-        self.checkBox_4.setText(_translate("MainWindow", "手套"))
-        self.checkBox_9.setText(_translate("MainWindow", "印花"))
-        self.checkBox_5.setText(_translate("MainWindow", "其他"))
-        self.label_6.setText(_translate("MainWindow", "磨损："))
-        self.checkBox_11.setText(_translate("MainWindow", "崭新出厂"))
-        self.checkBox_12.setText(_translate("MainWindow", "略有磨损"))
-        self.checkBox_13.setText(_translate("MainWindow", "久经沙场"))
-        self.checkBox_14.setText(_translate("MainWindow", "破损不堪"))
-        self.checkBox_15.setText(_translate("MainWindow", "战痕累累"))
-        self.label_7.setText(_translate("MainWindow", "类别："))
-        self.label_8.setText(_translate("MainWindow", "求购数大于:"))
-        self.label_3.setText(_translate("MainWindow", "排序："))
-        self.radioButton.setText(_translate("MainWindow", "由小至大排序"))
-        self.radioButton_2.setText(_translate("MainWindow", "由大至小排序"))
-        self.pushButton.setText(_translate("MainWindow", "检索"))
-        self.label.setText(_translate("MainWindow", "生成数据:"))
-        self.label_2.setText(_translate("MainWindow", "steam余额比例："))
-        self.pushButton_2.setText(_translate("MainWindow", "更新数据库"))
-        self.label_9.setText(_translate("MainWindow", "Cookie"))
-        #手动编写部分
-        #comboBox为排序依据  comboBox_2为类别
-        #排列方式选择，radioButton为由小至大ASC,radioButton_2为由大至小DESC
-        self.comboBox_2.addItems(['id','挂刀比例','倒货收益率','倒货收益','steam底价','buff底价','buff在售数','buff求购数','buff求购价'])
-        self.comboBox_2.currentIndexChanged.connect(self.selectOrderType)
-        self.comboBox.addItems(['全部','普通','暗金','纪念品'])
-        self.comboBox.currentIndexChanged.connect(self.selectType)
-        self.radioButton.clicked.connect(lambda:self.selectOrderMethod("ASC"))
-        self.radioButton_2.clicked.connect(lambda:self.selectOrderMethod("DESC"))
-        self.lineEdit_orderNumber.textEdited.connect(self.selectMinBuffBuyNumber)
-        self.checkBox_11.clicked.connect(lambda: self.selectExterior(self.checkBox_11.checkState(),0))
-        self.checkBox_12.clicked.connect(lambda: self.selectExterior(self.checkBox_12.checkState(),1))
-        self.checkBox_13.clicked.connect(lambda: self.selectExterior(self.checkBox_13.checkState(),2))
-        self.checkBox_14.clicked.connect(lambda: self.selectExterior(self.checkBox_14.checkState(),3))
-        self.checkBox_15.clicked.connect(lambda: self.selectExterior(self.checkBox_15.checkState(),4))
-        self.pushButton_2.clicked.connect(lambda :setCookie((self.lineEdit_Cookie.text()))  )
-        self.pushButton_2.clicked.connect(lambda :setDollarScale(self.lineEdit_scale2Search.text()))
-        self.pushButton_2.clicked.connect(getAllDetils)
-        self.checkBox.clicked.connect(lambda: self.selectItemType(self.checkBox.checkState(), 0))
-        self.checkBox_2.clicked.connect(lambda: self.selectItemType(self.checkBox_2.checkState(), 1))
-        self.checkBox_3.clicked.connect(lambda: self.selectItemType(self.checkBox_3.checkState(), 2))
-        self.checkBox_4.clicked.connect(lambda: self.selectItemType(self.checkBox_4.checkState(), 3))
-        self.checkBox_5.clicked.connect(lambda: self.selectItemType(self.checkBox_5.checkState(), 4))
-        self.checkBox_6.clicked.connect(lambda: self.selectItemType(self.checkBox_6.checkState(), 5))
-        self.checkBox_7.clicked.connect(lambda: self.selectItemType(self.checkBox_7.checkState(), 6))
-        self.checkBox_8.clicked.connect(lambda: self.selectItemType(self.checkBox_8.checkState(), 7))
-        self.checkBox_9.clicked.connect(lambda: self.selectItemType(self.checkBox_9.checkState(), 8))
-
-    def testSignal(self):
-        "快速测试信号是否被接收"
-        print('signal send success')
-
-    def selectOrderType(self):
-        "选择排序依据"
-        global orderType
-        orderType = orderTypeDict[self.comboBox_2.currentText()]
-        #print("执行selectOrderType()|OrderType:" + orderType)
-
-    def selectOrderMethod(self,buttonMethod):
-        "选择排序方式ASC,DESC"
-        global orderMethod
-        orderMethod=buttonMethod
-        #print("执行selectOrderMethod()，orderMethod="+orderMethod)
-
-    def selectMinBuffBuyNumber(self):
-        "修改筛选buff在售数量最小值"
-        global  buffBuy
-        buffBuy=self.lineEdit_orderNumber.text()
-
-    def selectType(self):
-        "修改筛选暗金 纪念品"
-        global type
-        type=typeDict[self.comboBox.currentText()]
-        print("执行selectType(),type="+type)
-
-    def selectItemType(self,CheckState,i):
-        "修改筛选物品种类"
-        global checklistType
-        checklistType[i] = CheckState
-
-    def selectExterior(self,CheckState,i):
-        "修改筛选物品磨损"
-        global checklistExterior
-        checklistExterior[i]=CheckState
-
-
-
-
-def buildSqlCommand():
-    global sqlCommand,orderMethod,buffBuy,type
-    #处理磨损筛选器
-    exterior=""
-    exteriorCount=0
-    for i in range (0,5):
-        if(checklistExterior[i]==2):
-            if (exteriorCount!=0):
-               exterior=exterior+","+checklistExteriorDict[i]
-            else:
-               exterior=exterior+checklistExteriorDict[i]
-               exteriorCount=exteriorCount+1
-    print(exterior)
-    #处理物品种类筛选器
-    typeFilter = ""
-    typeFilterCount = 0
-    for i in range (0,9):
-        if(checklistType[i]==2):
-            if (typeFilterCount!=0):
-               typeFilter=typeFilter+","+checklistTypeDict[i]
-            else:
-               typeFilter=typeFilter+checklistTypeDict[i]
-               typeFilterCount=typeFilterCount+1
-    print(typeFilter)
-
-
-    sqlCommand = "select * from buff where exterior IN ({exterior}) AND category_group IN ({TypeFilter}) AND buffBuy>={BuffBuy} AND type IN ({Type}) order by {scale_buff2steam} {OrderMethod} limit 1000".format(
-        exterior=exterior,TypeFilter=typeFilter,BuffBuy=buffBuy,Type=type,scale_buff2steam=orderType,OrderMethod=orderMethod)
-    print(exterior)
-    #print("OrderType:"+orderType)
-    #print("buildSqlCommand():"+sqlCommand)
-    asc(ui,sqlCommand)
-
-
-if __name__ == '__main__':
-    database = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-    database.setDatabaseName('database.db')
-    database.open()
-    app = QApplication(sys.argv)
-    MainWindow = QMainWindow()
-    ui = Ui_MainWindow()
-    ui.setupUi(MainWindow)
-    MainWindow.show()
-    buildSqlCommand()
-    asc(ui,sqlCommand)
-    sys.exit(app.exec_())
+        self.HellowWorld.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
+"p, li { white-space: pre-wrap; }\n"
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Hello</p>\n"
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
+        self.pushButton.setText(_translate("MainWindow", "PushButton"))
+        self.toolButton.setText(_translate("MainWindow", "..."))
+        self.radioButton.setText(_translate("MainWindow", "RadioButton"))
