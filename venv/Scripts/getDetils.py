@@ -8,7 +8,7 @@ import sys
 import re
 import time
 
-Cookie =  '_ntes_nuid=2aa8fb388a7d8dfcfe20f327b610e18a; Device-Id=E7Rl8bWbReoXkkr01PaU; _ga=GA1.2.962472406.1581387431; _ntes_nnid=2aa8fb388a7d8dfcfe20f327b610e18a,1605586644238; vinfo_n_f_l_n3=016860df49e4873d.1.0.1606819597564.0.1606820533516; NTES_CMT_USER_INFO=308308942%7C%E6%9C%89%E6%80%81%E5%BA%A6%E7%BD%91%E5%8F%8B0io6Le%7Chttp%3A%2F%2Fcms-bucket.nosdn.127.net%2F2018%2F08%2F13%2F078ea9f65d954410b62a52ac773875a1.jpeg%7Cfalse%7CeWQuYmUwMTYwMDI2Y2I5NDI0NmJAMTYzLmNvbQ%3D%3D; _gid=GA1.2.705940788.1607955127; game=csgo; Locale-Supported=zh-Hans; NTES_YD_SESS=.p5R1XzcUakBFBwT34SEI0W4mECxJ9hFvCjPi.7uYazgmVb8mPEkn1.1PXdjYd_r_AIdZz4Q3WTczvdrd6AXODz03EWdWOi3H1U.TcORFTjW0i6.H6knExzxg8hBDflxorb8zXAvUW18bJ3R4ekAN2Rb5vhOj5GqSilg.SEKmvG_sCsUtQafECZ_24CIMrMnpjwO42ARbj6VJm6UWsx2fh7MyhOHr3Y32ev3DBqzdSu9t; S_INFO=1608026411|0|3&80##|17640033514; P_INFO=17640033514|1608026411|1|netease_buff|00&99|null&null&null#lin&210100#10#0|&0|null|17640033514; remember_me=U1092697961|xEP3UzjTH2pH7eu8Qh4FQ66qeseKgnUo; session=1-VOZIHo0uC8XcqvmTbV3gc_MKgc_2IXgkSWaBG_ZpAboT2045747249; _gat_gtag_UA_109989484_1=1; csrf_token=IjViZDU3Y2EyYmZjNGI5YWFjMzFiOGM2MjRiYTgyMzM5ZWMwNDEwNTAi.EroasA.YOaKkjFATb68AYVOzpYu0pOgBTE'
+Cookie =  '_ntes_nuid=2aa8fb388a7d8dfcfe20f327b610e18a; Device-Id=E7Rl8bWbReoXkkr01PaU; _ga=GA1.2.962472406.1581387431; _ntes_nnid=2aa8fb388a7d8dfcfe20f327b610e18a,1605586644238; vinfo_n_f_l_n3=016860df49e4873d.1.0.1606819597564.0.1606820533516; NTES_CMT_USER_INFO=308308942%7C%E6%9C%89%E6%80%81%E5%BA%A6%E7%BD%91%E5%8F%8B0io6Le%7Chttp%3A%2F%2Fcms-bucket.nosdn.127.net%2F2018%2F08%2F13%2F078ea9f65d954410b62a52ac773875a1.jpeg%7Cfalse%7CeWQuYmUwMTYwMDI2Y2I5NDI0NmJAMTYzLmNvbQ%3D%3D; _gid=GA1.2.705940788.1607955127; Locale-Supported=zh-Hans; game=csgo; NTES_YD_SESS=ujXM1fboC1DIyJ3fwalxtWwNfbkHMnn_fT0hTN5hxMVwuES28aY.ohsul7eO2u56GWuAktTF1uC4llsxR80o_HHOTL34ZmJifNqZiFUATCWFyGsnWqn1wjAymX3MzkdZzK3rXu_IcgP1KvnEU3mUbjNiZ_PWF5vhvnUMr1J95ljFT9UNYTn0GJUBemkznNgUiHiPCm8SUuOdsbCNKmztHUPycsbEk3VU7K27Dr.hyduti; S_INFO=1608088099|0|3&80##|49-15902943806; P_INFO=49-15902943806|1608088099|1|netease_buff|00&99|null&null&null#lin&210100#10#0|&0|null|49-15902943806; remember_me=U1098431608|UxZ28mt3DweVhte8R4EiriRmWlh6fSCj; session=1-tVGPvzYJ-sLhT4SG3FuYBUk5t0WngFqjcm4MtANKHPLv2041979680; _gat_gtag_UA_109989484_1=1; csrf_token=IjZjNzNjNTU2MTM1ZDM4ZDc5ZGVlYmY2NWY0NGRmZjVjOTBjZDYyZGIi.ErsLuw._VBBpmx3NqhKCwKxUP_vzwdLKec'
 
 DollarScale=0.8
 now=datetime.datetime.now()
@@ -82,7 +82,7 @@ def search(url,categoType):
         return
 
 
-      #print("--------------------------------------具体信息---------------------------------------------------------")
+      print("--------------------------------------具体信息---------------------------------------------------------")
       for i in range(20):
           #变量定义区
           item = content['data']['items'][i]
@@ -90,9 +90,16 @@ def search(url,categoType):
           name = item['name']                           #物品名称
           buffMinPrice = float(item['sell_min_price'])       #buff底价
           steamMinPrice = float(item['goods_info']['steam_price_cny'])  #steam底价
-          scale = round(float(item['sell_min_price']) / (float(item['goods_info']['steam_price_cny']) * 0.87), 4)  #挂刀比例
+          try:
+            scale = round(float(item['sell_min_price']) / (float(item['goods_info']['steam_price_cny']) * 0.87), 4)  #挂刀比例
+          except ZeroDivisionError:
+            scale=-1
           minus_steam2buff = round((buffMinPrice * 0.965-(steamMinPrice * float(DollarScale))),2) # 扫货差价
-          scaleSteam2Buff = round(minus_steam2buff/(steamMinPrice* float(DollarScale)),4)# 扫货收益率
+          try:
+            scaleSteam2Buff = round(minus_steam2buff/(steamMinPrice* float(DollarScale)),4)# 扫货收益率
+          except ZeroDivisionError:
+            scaleSteam2Buff=-1
+
           buffonSale = item['sell_num']  #buff在售数量
           buffBuy = item['buy_num']  #buff求购数量
           type = item['goods_info']['info']['tags']['quality']['localized_name']   #是否为暗金/纪念品
@@ -100,7 +107,7 @@ def search(url,categoType):
           try:
               exterior = item['goods_info']['info']['tags']['exterior']['localized_name']  #磨损等级
           except KeyError:
-              exterior = 1;
+              exterior = 1
           steamMarketLink = item['steam_market_url'] #steam市场URL
           category_group = {'knife':'匕首','pistol':'手枪','rifle':'步枪','smg':'微型冲锋枪','shotgun':'霰弹枪','machinegun':'机枪','hands':'手套','sticker':'印花','other':'其他'}
           categoTypeInside = category_group[categoType]
@@ -117,7 +124,7 @@ def search(url,categoType):
                    minus_steam2buff=minus_steam2buff, buffonSale=buffonSale, buffBuy=buffBuy, type=type,
                    buyMaxPrice=buyMaxPrice, exterior=exterior,categoryGroup=categoTypeInside,
                    steamMarketLink=steamMarketLink, time=nowString)
-            #print(sql)
+            print(sql)
             c.execute(sql)  # 执行sql语句
             conn.commit()  # 提交数据库操作
           except sqlite3.IntegrityError:
@@ -130,10 +137,11 @@ def search(url,categoType):
                  minus_steam2buff=minus_steam2buff, buffonSale=buffonSale, buffBuy=buffBuy, type=type,
                  buyMaxPrice=buyMaxPrice, exterior=exterior,categoryGroup=categoTypeInside,
                  steamMarketLink=steamMarketLink, time=nowString)
-            #print(sql)
+            print(sql)
             c.execute(sql)  # 执行sql语句
             conn.commit()  # 提交数据库操作
           #键值错误处理，调试中
+      time.sleep(1)
 
 
 
@@ -143,7 +151,7 @@ def urlAnalyze(categoType):
   "URL解析，由大类页面分析该大类消息"
   #print(categoType)
   url = ("https://buff.163.com/api/market/goods?game=csgo&page_num=1&category_group=%s&_=1607400865227") % categoType
-  print(Cookie)
+  #print(Cookie)
   headers = {
       'Cookie': Cookie
   }
@@ -156,7 +164,7 @@ def urlAnalyze(categoType):
     #遍历大类下全部物品
     for i in range(1,content['data']['total_page']):
         #url=("https://buff.163.com/api/market/goods?game=csgo&page_num=%d&category_group=shotgun&_=1607400865227")%i
-        url = ("https://buff.163.com/api/market/goods?game=csgo&page_num={}&category_group={}&_=1607400865227".format(i,url))
+        url = ("https://buff.163.com/api/market/goods?game=csgo&page_num={}&category_group={}&_=1607400865227".format(i,categoType))
         search(url,categoType)
   else:
       print("-----------------------------------获取物品大类信息失败------------------------------------------------------")
@@ -167,7 +175,7 @@ def getAllDetils():
     print("cookie:" + Cookie)
     print('Dollar:' , DollarScale)
     url={0:'knife',1:'pistol',2:'rifle',3:'smg',4:'shotgun',5:'machinegun',6:'hands',7:'sticker',8:'other'}
-    for i in range(0,9):
+    for i in range(8,9):
       urlAnalyze(url[i])
 
 

@@ -27,6 +27,8 @@ exterior = '崭新出厂'
 orderMethod = 'ASC'
 #求购数量下限
 buffBuy=0
+#筛选价格区间
+buffMinPrice=10
 #物品暗金,纪念品品质
 type="'普通','★','StatTrak™','纪念品'"
 typeDict={'全部':"'普通','★','StatTrak™','纪念品'",'普通':"'普通','★'",'暗金':"'StatTrak™'","纪念品":"'纪念品'"}
@@ -35,7 +37,7 @@ checklistExterior=[2,2,2,2,2]
 checklistExteriorDict = {0:"'崭新出厂'",1:"'略有磨损'",2:"'久经沙场'",3:"'破损不堪'",4:"'战痕累累'"}
 #物品种类筛选
 checklistType=[2,2,2,2,2,2,2,2,2]
-checklistTypeDict= {0:"'匕首'",1:"'手枪'",2:"'步枪'",3:"'微型冲锋枪'",4:"'霰弹枪'",5:"'机枪'",6:"'手套'",7:"'印花'",8:"'其他'"}
+checklistTypeDict= {0:"'匕首'",5:"'手枪'",1:"'步枪'",6:"'微型冲锋枪'",2:"'霰弹枪'",7:"'机枪'",3:"'手套'",8:"'印花'",4:"'其他'"}
 
 
 class Ui_MainWindow(object):
@@ -153,6 +155,7 @@ class Ui_MainWindow(object):
         self.comboBox = QtWidgets.QComboBox(self.centralwidget)
         self.comboBox.setObjectName("comboBox")
         self.formLayout_4.setWidget(3, QtWidgets.QFormLayout.FieldRole, self.comboBox)
+
         self.label_8 = QtWidgets.QLabel(self.centralwidget)
         self.label_8.setObjectName("label_8")
         self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.label_8)
@@ -160,6 +163,15 @@ class Ui_MainWindow(object):
         self.lineEdit_orderNumber.setObjectName("lineEdit_orderNumber")
         self.lineEdit_orderNumber.setPlaceholderText("0")
         self.formLayout_4.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.lineEdit_orderNumber)
+        self.label_10 = QtWidgets.QLabel(self.centralwidget)
+        self.label_10.setObjectName("label_10")
+        self.formLayout_4.setWidget(5, QtWidgets.QFormLayout.LabelRole, self.label_10)
+        self.lineEdit_minPrice = QtWidgets.QLineEdit(self.centralwidget)
+        self.lineEdit_minPrice.setObjectName("lineEdit_minPrice")
+        self.lineEdit_minPrice.setPlaceholderText("10")
+        self.formLayout_4.setWidget(5, QtWidgets.QFormLayout.FieldRole, self.lineEdit_minPrice)
+
+
         self.verticalLayout_2.addLayout(self.formLayout_4)
         self.formLayout.setLayout(2, QtWidgets.QFormLayout.FieldRole, self.verticalLayout_2)
         self.line = QtWidgets.QFrame(self.centralwidget)
@@ -260,6 +272,7 @@ class Ui_MainWindow(object):
         self.checkBox_15.setText(_translate("MainWindow", "战痕累累"))
         self.label_7.setText(_translate("MainWindow", "类别："))
         self.label_8.setText(_translate("MainWindow", "求购数大于:"))
+        self.label_10.setText(_translate("MainWindow", "buff底价大于:"))
         self.label_3.setText(_translate("MainWindow", "排序："))
         self.radioButton.setText(_translate("MainWindow", "由小至大排序"))
         self.radioButton_2.setText(_translate("MainWindow", "由大至小排序"))
@@ -278,6 +291,7 @@ class Ui_MainWindow(object):
         self.radioButton.clicked.connect(lambda:self.selectOrderMethod("ASC"))
         self.radioButton_2.clicked.connect(lambda:self.selectOrderMethod("DESC"))
         self.lineEdit_orderNumber.textEdited.connect(self.selectMinBuffBuyNumber)
+        self.lineEdit_minPrice.textEdited.connect(self.selectMinBuffSalePrice)
         self.checkBox_11.clicked.connect(lambda: self.selectExterior(self.checkBox_11.checkState(),0))
         self.checkBox_12.clicked.connect(lambda: self.selectExterior(self.checkBox_12.checkState(),1))
         self.checkBox_13.clicked.connect(lambda: self.selectExterior(self.checkBox_13.checkState(),2))
@@ -317,6 +331,11 @@ class Ui_MainWindow(object):
         global  buffBuy
         buffBuy=self.lineEdit_orderNumber.text()
 
+    def selectMinBuffSalePrice(self):
+        "修改筛选buff在售价最小值"
+        global  buffMinPrice
+        buffMinPrice=self.lineEdit_minPrice.text()
+
     def selectType(self):
         "修改筛选暗金 纪念品"
         global type
@@ -337,7 +356,7 @@ class Ui_MainWindow(object):
 
 
 def buildSqlCommand():
-    global sqlCommand,orderMethod,buffBuy,type
+    global sqlCommand,orderMethod,buffBuy,type,buffMinPrice
     #处理磨损筛选器
     exterior=""
     exteriorCount=0
@@ -360,10 +379,9 @@ def buildSqlCommand():
                typeFilter=typeFilter+checklistTypeDict[i]
                typeFilterCount=typeFilterCount+1
     print(typeFilter)
-
-
-    sqlCommand = "select * from buff where exterior IN ({exterior}) AND category_group IN ({TypeFilter}) AND buffBuy>={BuffBuy} AND type IN ({Type}) order by {scale_buff2steam} {OrderMethod} limit 1000".format(
-        exterior=exterior,TypeFilter=typeFilter,BuffBuy=buffBuy,Type=type,scale_buff2steam=orderType,OrderMethod=orderMethod)
+    #组装sql语句
+    sqlCommand = "select * from buff where exterior IN ({exterior}) AND category_group IN ({TypeFilter}) AND buffBuy>={BuffBuy} AND buff_min_price >={BuffMinPrice} AND type IN ({Type}) order by {scale_buff2steam} {OrderMethod}".format(
+        exterior=exterior,TypeFilter=typeFilter,BuffBuy=buffBuy,BuffMinPrice=buffMinPrice,Type=type,scale_buff2steam=orderType,OrderMethod=orderMethod)
     print(exterior)
     #print("OrderType:"+orderType)
     #print("buildSqlCommand():"+sqlCommand)
